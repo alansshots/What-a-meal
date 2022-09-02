@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.png'
 
 const Navbar = () => {
+
   return (
     <div id='navbar' className="flex flex-row items-center justify-start ml-2">
       <Link to='/'>

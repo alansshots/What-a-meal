@@ -35,7 +35,7 @@ const Search = () => {
   return (
     <>
     <div id='search' className='w-full lg:w-1/2 lg:m-auto mt-10 flex-col items-center justify-center mr-10'>
-        <form className='w-full m-5'>   
+        <div className='w-full m-5'>   
             <label htmlFor="search" className="mb-2 font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
             <div className="relative">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 text-2xl">
@@ -44,16 +44,16 @@ const Search = () => {
                 <input type="text" className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300" placeholder="Search..." onChange={(e)=> setSearch(e.target.value)} />
                 <button type="button" className="text-white absolute right-2.5 bottom-2.5 bg-red-600 hover:bg-red-700  font-medium rounded-lg text-sm px-4 py-2" onClick={handleSearch}>Search</button>
             </div>
-        </form>
+        </div>
         <div className='flex flex-row items-center justify-center'>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setCategory('Beef'); handleSearchByCategory();}}>Beef</button>
+        onClick={() => { setCategory('Beef'); handleSearchByCategory()}}>Beef</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={handleSearchByCategory}>Breakfast</button>
+        onClick={() => { setCategory('Beakfast'); handleSearchByCategory()}}>Breakfast</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={handleSearchByCategory}>Chicken</button>
+        onClick={() => { setSearch('Beef'); handleSearchByCategory()}}>Chicken</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={handleSearchByCategory}>Dessert</button>
+        onClick={() => { setSearch('Beef'); handleSearchByCategory()}}>Dessert</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
         onClick={handleSearchByCategory}>Pasta</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
@@ -67,9 +67,20 @@ const Search = () => {
     <div id='results' className='flex flex-col items-center justify-center mt-10'>
         <h2 className='text-red-600 text-4xl font-semibold mb-10'>Results</h2>
         <div className='flex flex-row flex-wrap items-center justify-center'> 
-        {meals.map((meal) => (
-            <Mealcard meal={meal} key={meal.idMeal}/>
-        ))}
+        {
+          meals ? (
+            meals.map((meal) => (
+              <Mealcard meal={meal} key={meal.idMeal}/>
+          ))
+          ) : (
+            <div className='flex flex-col items-center justify-center mb-10'>
+              <h2 className='text-red-600 text-md font-semibold mb-2'>No meals found! Maybe we can choose you?</h2>
+              <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
+              onClick={handleRandomSearch}>Choose for me!</button>
+            </div>
+          )
+      
+        }
         </div>
     </div>
     </>
