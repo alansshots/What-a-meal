@@ -26,7 +26,7 @@ const Search = () => {
       console.log(meals)
     }  
 
-    const handleSearchByCategory = async () => {
+    const handleSearchByCategory = async (category) => {
         const { data } = await axios(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
         setMeals(data.meals)
         console.log(meals)
@@ -47,17 +47,17 @@ const Search = () => {
         </div>
         <div className='flex flex-row items-center justify-center'>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setCategory('Beef'); handleSearchByCategory()}}>Beef</button>
+        onClick={() => { setCategory('Beef'); handleSearchByCategory('Beef')}}>Beef</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setCategory('Beakfast'); handleSearchByCategory()}}>Breakfast</button>
+        onClick={() => { setCategory('Beakfast'); handleSearchByCategory('Beakfast')}}>Breakfast</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setSearch('Beef'); handleSearchByCategory()}}>Chicken</button>
+        onClick={() => { setSearch('Chicken'); handleSearchByCategory('Chicken')}}>Chicken</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setSearch('Beef'); handleSearchByCategory()}}>Dessert</button>
+        onClick={() => { setSearch('Dessert'); handleSearchByCategory('Dessert')}}>Dessert</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={handleSearchByCategory}>Pasta</button>
+        onClick={() => { setSearch('Pasta'); handleSearchByCategory('Pasta')}}>Pasta</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={handleSearchByCategory}>Seafood</button>
+        onClick={() => { setSearch('Seafood'); handleSearchByCategory('Seafood')}}>Seafood</button>
         <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
         onClick={handleRandomSearch}>Surprise me!</button>
         </div>
@@ -74,7 +74,7 @@ const Search = () => {
           ))
           ) : (
             <div className='flex flex-col items-center justify-center mb-10'>
-              <h2 className='text-red-600 text-md font-semibold mb-2'>No meals found! Maybe we can choose you?</h2>
+              <h2 className='text-red-600 text-md font-semibold mb-2'>No meals found! Maybe we can choose for you?</h2>
               <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
               onClick={handleRandomSearch}>Choose for me!</button>
             </div>

@@ -22,10 +22,10 @@ const Meal = () => {
     console.log(data)
   }
 
-//   const getSuggested = async () => {
-//     const { data } = await axios(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`);
-//     setSetsuggested(data.meals)      
-//   }
+  // const getSuggested = async () => {
+  //   const { data } = await axios(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`);
+  //   setSetsuggested(data.meals)      
+  // }
 
   const videoSrc = meal.strYoutube
   let procesedVideoSrc = ''
@@ -44,7 +44,7 @@ const Meal = () => {
     <div className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-40 object-cover object-center rounded" src={meal.strMealThumb}/>
+          <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-1/2 h-40 object-cover object-center rounded" src={meal.strMealThumb}/>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <div className="flex flex-wrap justify-starts items-center mt-4">
             <div className="text-xs mr-2 py-1.5 px-4 text-red-500 border-red-500 border-2 rounded-2xl">
