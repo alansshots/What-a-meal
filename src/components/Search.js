@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import { MdSearch } from "react-icons/md";
+import { motion} from 'framer-motion'
 
 import Mealcard from './Mealcard'
 
@@ -35,7 +36,7 @@ const Search = () => {
   return (
     <>
     <div id='search' className='w-full lg:w-1/2 lg:m-auto mt-10 flex-col items-center justify-center mr-10'>
-        <div className='w-full m-5'>   
+        <div className='w-full ml-1 mr-1'>   
             <label htmlFor="search" className="mb-2 font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
             <div className="relative">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 text-2xl">
@@ -45,21 +46,48 @@ const Search = () => {
                 <button type="button" className="text-white absolute right-2.5 bottom-2.5 bg-red-600 hover:bg-red-700  font-medium rounded-lg text-sm px-4 py-2" onClick={handleSearch}>Search</button>
             </div>
         </div>
-        <div className='flex flex-row items-center justify-center'>
-        <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setCategory('Beef'); handleSearchByCategory('Beef')}}>Beef</button>
-        <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setCategory('Beakfast'); handleSearchByCategory('Beakfast')}}>Breakfast</button>
-        <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setSearch('Chicken'); handleSearchByCategory('Chicken')}}>Chicken</button>
-        <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setSearch('Dessert'); handleSearchByCategory('Dessert')}}>Dessert</button>
-        <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setSearch('Pasta'); handleSearchByCategory('Pasta')}}>Pasta</button>
-        <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={() => { setSearch('Seafood'); handleSearchByCategory('Seafood')}}>Seafood</button>
-        <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
-        onClick={handleRandomSearch}>Surprise me!</button>
+        <div className='flex flex-row items-center justify-center mt-2 mb-2 w-full flex-wrap'>
+        <motion.button 
+        whileHover={{scale: 1.05}}
+        whileTap={{ scale: 0.8 }} 
+        className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 sm:ml-5 m-1" 
+        onClick={() => { setCategory('Beef'); handleSearchByCategory('Beef')}}>Beef</motion.button>
+
+        <motion.button 
+        whileHover={{scale: 1.05}}
+        whileTap={{ scale: 0.8 }} 
+        className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 sm:ml-5 m-1" 
+        onClick={() => { setCategory('Beakfast'); handleSearchByCategory('Beakfast')}}>Breakfast</motion.button>
+        
+        <motion.button 
+        whileHover={{scale: 1.05}}
+        whileTap={{ scale: 0.8 }}
+        className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 sm:ml-5 m-1" 
+        onClick={() => { setSearch('Chicken'); handleSearchByCategory('Chicken')}}>Chicken</motion.button>
+        
+        <motion.button 
+        whileHover={{scale: 1.05}}
+        whileTap={{ scale: 0.8 }}
+        className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 sm:ml-5 m-1" 
+        onClick={() => { setSearch('Dessert'); handleSearchByCategory('Dessert')}}>Dessert</motion.button>
+        
+        <motion.button 
+        whileHover={{scale: 1.05}}
+        whileTap={{ scale: 0.8 }}
+        className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 sm:ml-5 m-1" 
+        onClick={() => { setSearch('Pasta'); handleSearchByCategory('Pasta')}}>Pasta</motion.button>
+        
+        <motion.button 
+        whileHover={{scale: 1.05}}
+        whileTap={{ scale: 0.8 }}
+        className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 sm:ml-5 m-1" 
+        onClick={() => { setSearch('Seafood'); handleSearchByCategory('Seafood')}}>Seafood</motion.button>
+        
+        <motion.button 
+        whileHover={{scale: 1.05}}
+        whileTap={{ scale: 0.8 }} 
+        className="text-white whitespace-nowrap bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 sm:ml-5 m-1" 
+        onClick={handleRandomSearch}>Surprise me!</motion.button>
         </div>
         
     </div>
@@ -73,11 +101,28 @@ const Search = () => {
               <Mealcard meal={meal} key={meal.idMeal}/>
           ))
           ) : (
-            <div className='flex flex-col items-center justify-center mb-10'>
+            <motion.div 
+            whileHover={{scale: 1.05}}
+            whileTap = {{scale: 0.95}}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+            default: {
+              duration: 0.1,
+              ease: [0, 0.71, 0.2, 1.01]
+            },
+            scale: {
+              type: "spring",
+              damping: 15,
+            //   stiffness: 10,
+            //   restDelta: 0.001
+            }
+            }}
+            className='flex flex-col items-center justify-center mb-10'>
               <h2 className='text-red-600 text-md font-semibold mb-2'>No meals found! Maybe we can choose for you?</h2>
               <button className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-7 py-1 ml-5" 
               onClick={handleRandomSearch}>Choose for me!</button>
-            </div>
+            </motion.div>
           )
       
         }

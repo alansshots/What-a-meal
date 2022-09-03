@@ -6,11 +6,9 @@ import Mealcard from '../components/Mealcard'
 const Meal = () => {
   useEffect(() => {
     getMealData();
-    // getSuggested();
   }, [])
 
   const [meal, setMeal] = useState([])
-  const [suggested, setSetsuggested] = useState([])
 
   const { pathname } = window.location;
   const paths = pathname.split("/").filter(entry => entry !== "");
@@ -21,11 +19,6 @@ const Meal = () => {
     setMeal(data.meals[0])
     console.log(data)
   }
-
-  // const getSuggested = async () => {
-  //   const { data } = await axios(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`);
-  //   setSetsuggested(data.meals)      
-  // }
 
   const videoSrc = meal.strYoutube
   let procesedVideoSrc = ''
@@ -60,17 +53,10 @@ const Meal = () => {
         </div>
       </div>
     </div>
-        <h2 className='text-red-600 text-4xl font-semibold mb-10 text-center mt-10'>Video Instructions</h2>
-        <div className='flex items-center justify-center h-[500px]'>
-            <iframe src={procesedVideoSrc} frameBorder='0' className='lg:w-1/2 w-full h-[500px]'></iframe>
+        <h2 className='text-red-600 text-2xl sm:text-4xl font-semibold mb-10 text-center mt-10'>Video Instructions</h2>
+        <div className='flex items-center justify-center h-[300px] sm:h-[500px]'>
+            <iframe src={procesedVideoSrc} frameBorder='0' className='lg:w-1/2  h-[300px] sm:h-[500px]'></iframe>
         </div>
-
-        {/* <h2 className='text-red-600 text-4xl font-semibold mb-10 text-center mt-10'>More Meals</h2>
-        <div className='flex flex-row flex-wrap items-center justify-center'> 
-        {suggested.map((suggest) => (
-            <Mealcard meal={suggest} key={suggest.idMeal}/>
-        ))}
-        </div> */}
     </>
   )
 }
