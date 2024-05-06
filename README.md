@@ -1,5 +1,5 @@
 <h1>What A Meal!</h1>
-<p>What a meal is a modern and creative take on recipes and food-related content. However, unlike other recipe websites, this platform takes pride in the quality of recipes it provides. Don’t expect to find millions of recipes on this site, but a handful of handpicked and trusted recipes.The platform also provide wrriten as well as video instructions on how to prepare your favourite meals!</p>
+<p>What a meal is a modern and creative take on recipes and food-related content. However, unlike other recipe websites, this platform takes pride in the quality of recipes it provides. Don’t expect to find millions of recipes on this site, but a handful of handpicked and trusted recipes.The platform also provide written as well as video instructions on how to prepare your favorite meals!</p>
 
 <h3>Technologies used:</h3>
 <p> -> React <p/>
